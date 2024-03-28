@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+
+{% block Home %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Timestamps</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  h1 {
+    font-weight: bold;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #007bff;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .timestamps {
+    text-align: left;
+    margin-top: 20px;
+  }
+  .timestamps p {
+    margin: 5px 0;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Generate Timestamps</h1>
+    <form id="timestampForm" method="post" >
+      {% csrf_token %}
+      {{ form.as_p }} 
+      <button type="submit" id="generateBtn">Generate Timestamps</button>
+      <div class="loader" id="loader" style="display: none;"></div>
+    </form>
+    <div class="timestamps" id="timestamps">
+      <div class="timestamps" id="timestamps">
+        <h1>Generated Timestamps:</h1>
+        {% if timestamps %}
+          {% for key,value in timestamps.items %}
+            <p>{{ key }} || {{value}}</p>
+          {% endfor %}
+        {% else %}
+          <p>No timestamps available</p>
+        {% endif %}
+      <!-- Timestamps will be displayed here -->
+    </div>
+  </div>
+        
+</body>
+</html>
+
+{% endblock Home %}
+    
