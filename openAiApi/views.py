@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 from openAiApi.extract_transcipt import extract_transcript
 from openAiApi.generate_completion import generate_completion
@@ -18,8 +19,8 @@ def index(request):
     return render(request,'index.html')
 def Logout(request):
     logout(request)
-    return redirect('home') 
-
+    return redirect('generate_timestamps') 
+@login_required
 def generate_timestamps(request):
 
     if request.method == 'POST':
