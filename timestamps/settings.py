@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-$bj)e2om+g_nzh^o#l)o9+@x5#^ccc9h(r7b(3nw+#0kk)jrul
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 
 # Application definition
 SITE_ID = 2
@@ -142,3 +142,5 @@ LOGOUT_REDIRECT_URL = "/"
 SESSION_COOKIE_AGE=1200
 OPENAI_API_KEY = "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"
 LOGIN_URL = '/login/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
